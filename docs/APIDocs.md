@@ -192,8 +192,6 @@ This document provides an overview of the endpoints for the FastAPI application,
 
 ---
 
-## Endpoints
-
 ### POST /classes/{course_id}/editAnnouncement/{announcement_id}
 - **Description**: This endpoint allows a lecturer to save edited details for an announcement, including its name, date, description, and attachments.
 - **Parameters**:
