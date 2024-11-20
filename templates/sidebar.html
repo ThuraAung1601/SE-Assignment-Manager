@@ -1,0 +1,48 @@
+<div class="responsive-bar" id="bar-icon">
+    <div class="responsive-bar-icon">
+        <i class="fas fa-bars"></i>
+    </div>
+</div>
+
+<script>
+    document.querySelector("#bar-icon").addEventListener("click", () => {
+        document.querySelector(".side-bar").classList.toggle("active");
+    });
+</script>
+
+<div class="side-bar">
+    <label>Courses</label>
+    <div class="course-container">
+        {% if client_type == "Student" %}
+        {% for enroll in client.enrolls %}
+        <div class="course">
+            <label>{{enroll.course.name}}</label>
+            <div class="dropdown-content">
+                <a href="/classes/{{ enroll.course.course_id }}/announcements">
+                    <div class="course-content">Announcements</div>
+                </a>
+                <a href="/classes/{{ enroll.course.course_id }}/assignments">
+                    <div class="course-content">Assignments</div>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+        {% elif client_type == "Lecturer" %}
+        {% for course in client.courses %}
+        <div class="course">
+            <label>{{course.name}}</label>
+            <div class="dropdown-content">
+                <a href="/classes/{{ course.course_id }}/announcements">
+                    <div class="course-content">Announcements</div>
+                </a>
+                <a href="/classes/{{ course.course_id }}/assignments">
+                    <div class="course-content">Assignments</div>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div>No enrolled courses.</div>
+        {% endif %}
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<head>
+    {% include 'head.html' %}
+    <link rel="stylesheet" type="text/css" href="/css/header.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/classes.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.js"></script>
+</head>
+
+<body>
+    {% include 'nav.html'%}
+
+    <div class="spacer" id="spacer"></div>
+
+    <div class="nav-bottom" id="nav-responsive">
+        <div class="nav-move">
+            <!-- Calendar Code -->
+            <div id="calendar"></div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#calendar').fullCalendar({
+                events: [
+                    {
+                        title: 'Admission Interview',
+                        start: '2024-11-16T10:00:00',
+                        end: '2024-11-16T12:00:00',
+                        description: 'Interview all the international students from online',
+                        location: 'Room 405'
+                    },
+                    {
+                        title: 'Code Review Session',
+                        start: '2024-11-20T14:00:00',
+                        end: '2024-11-20T16:00:00',
+                        description: 'Review code for the recent sprint.',
+                        location: 'Room 202'
+                    }
+                ],
+                eventClick: function(event) {
+                    alert('Event: ' + event.title + '\n' + event.description + '\n' + event.start.format());
+                }
+            });
+        });
+    </script>
+</body>

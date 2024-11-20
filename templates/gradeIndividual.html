@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include 'head.html' %}
+    <link rel="stylesheet" type="text/css" href="/css/header.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/classes.css">
+    
+</head>
+
+<body>
+    {% include 'nav.html'%}
+
+    <div class="content">
+
+        {% include 'sidebar.html'%}
+
+        <div class="right-content">
+            <div class="banner">
+                <img src="{{ course.banner }}" alt="">
+            </div>
+            <div class="title">
+                {{ course.name }}/{{ assignment.name }} - Grading
+            </div>
+            <div class="student-small-title">
+                {{ student.ID }} &nbsp {{ student.name }}
+            </div>
+            <div class="wrap-assignment">
+                <div class="grade-all-ctn">
+                    <div class="grading-title">Grading</div>
+                    <div class="horizontal-line"></div>
+                    <form action="/grading/{{course.course_id}}/{{assignment.id}}/{{student.ID}}" method="POST" id="grading">
+                        <div class="grading-form">
+                            <input type="number" class="input" placeholder="Enter the score." value="{{assignment.submitted_work[student.ID]['score']}}" name="score">
+                            <!-- list of summited files -->
+                            <div class="userfiles" id="user-files">
+                               {% if assignment.checkSubmitted(student.ID) == "Not Summited" %}
+                                <div class="file">
+                                    <p>Not Summited</p>
+                                </div>
+                                    {% else %}
+                                    {% for file in assignment.submitted_work[student.ID]["work"] %}
+                                    <div class="file">
+                                        <p>{{ file.split('/') | last }}</p>
+                                        <a href="/{{ file }}" target="_blank" class="remove-file">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </a>
+                                    </div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <input type="submit" class="input" value="SUBMIT"></div>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include 'head.html' %}
+    <link rel="stylesheet" type="text/css" href="/css/header.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/classes.css">
+</head>
+
+<body>
+    {% include 'nav.html'%}
+
+    <div class="content">
+
+        {% include 'sidebar.html'%}
+
+        <div class="right-content">
+            <div class="banner">
+                <img src="{{ course.banner }}" alt="">
+            </div>
+            <div class="title">
+                {{ course.name }} - Announcements
+            </div>
+            <div class="title">
+                {% if client_type == "Lecturer" %}
+                <a href="/classes/{{course.course_id}}/addAnnouncement" class="add-assignment">
+                    ADD ANNOUNCEMENT <i class="fa-solid fa-plus"></i>
+                </a>
+                {% endif %}
+            </div>
+            <div class="wrap-assignment">
+                <div class="assignments-ctn">
+                    {%if course.announcements|length > 0 %}
+                    {% for announcement in course.announcements %}
+                        {% if client_type == "Lecturer" %}
+                        <div class="assignment">
+                            <div class="assignment-title">{{ announcement.name }}</div>
+                            
+                            <div class="assignment-ctn-edit">
+                                <a href="/classes/{{course.course_id}}/announcements/{{announcement.id}}"> <!-- link to grading page -->
+                                    <i class="fa-solid fa-eye"></i>
+                                    <p>PREVIEW</p>
+                                </a>
+                                <a href="/classes/{{course.course_id}}/editAnnouncement/{{announcement.id}}">
+                                    <i class="fa-solid fa-pencil"></i>
+                                    <p>EDIT</p>
+                                </a>
+                                <a href="/classes/{{course.course_id}}/removeAnnouncement/{{announcement.id}}">
+                                    <i class="fa-solid fa-trash"></i>
+                                    <p>DELETE</p>
+                                </a>
+                            </div>
+    
+                        </div>
+                        {% else %}
+                        <a href="/classes/{{course.course_id}}/announcements/{{announcement.id}}" class="assignment hover-orange">
+                            <div class="assignment-title">{{ announcement.name }}</div>
+                            <div class="assignment-duedate">Date {{ announcement.this_date }}</div>
+                        </a>
+                        {% endif %}
+                    {% endfor %}
+                    {% else %}
+                    <div>No announcement.</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

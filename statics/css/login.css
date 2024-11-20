@@ -1,0 +1,99 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+.login-container {
+  background-color: white;
+  width: 500px;
+  height: 40%;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.login-container h2 {
+  text-align: center;
+  color: var(--black);
+  margin-bottom: 20px;
+  font-size: 25px;
+}
+.input-group {
+  margin-bottom: 15px;
+  position: relative;
+}
+.input-group input {
+  width: 100%;
+  padding:15px 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+}
+.input-group input:focus {
+  border-color: #007bff;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 20px;
+
+}
+
+.button-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.button-home, .button-login {
+  padding: 1rem 2rem;
+  border-radius: 0.1rem;
+  border: none;
+  color: var(--black);
+  font-weight: bold;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-radius: 0.5rem;
+}
+
+.button-login {
+  background-color: var(--accent-color);
+  color: var(--white);
+  padding: 1rem 2rem;
+}
+
+.button-login:hover {
+  background: var(--kmitl-orange);
+}
+
+.button-home:hover i {
+  color: var(--kmitl-orange);
+} 
+
+.additional-info {
+  margin-top: 20px;
+  font-size: 18px;
+  color: var(--black);
+  text-align: center;
+}
+.error-input {
+  border: 2px solid red !important;
+}
+.error-message {
+  color: red;
+  font-size: 0.8em;
+  margin-top: 5px;
+  display: none;
+}
+

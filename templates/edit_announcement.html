@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include 'head.html' %}
+    <link rel="stylesheet" type="text/css" href="/css/header.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/classes.css">
+    <link rel="stylesheet" type="text/css" href="/css/add_assignment.css">
+</head>
+
+<body>
+    {% include 'nav.html'%}
+
+    <div class="content">
+            
+        {% include 'sidebar.html'%}
+        
+        <div class="right-content">
+            <div class="banner">
+                <img src="{{ course.banner }}" alt="">
+            </div>
+            <div class="add-assignment-container-top">
+                <div class="add-assignment-container">
+                    <h2>Edit Announcement</h2>
+                    <form action="/classes/{{course.course_id}}/editAnnouncement/{{announcement.id}}" method="POST" enctype="multipart/form-data" id="profile">
+                        <!-- Existing form fields -->
+                        <div class="wrap-add-assignment">
+                            <div class="add-assignment-content">
+                                <label for="name">ANNOUNCEMENT NAME</label>
+                                <input type="text" id="name" name="name" value="{{announcement.name}}" required>
+        
+                                <label for="due_date">POST DATE(yyyy-mm-dd)</label>
+                                <input type="text" id="due_date" name="this_date" value="{{announcement.this_date}}" required>
+
+                                <label for="description">DESCRIPTION</label>
+                                <textarea id="description" name="description" cols="30" rows="10" value="{{announcement.description}}">{{announcement.description}}</textarea>
+                            </div>
+                            <!-- New profile picture upload field -->
+                            <div class="add-assignment-content">
+                                <label for="attachment-files">ATTACHMENT FILES</label>
+                                <div class="userfiles" id="user-files">
+                                    {% for file in announcement.attachment %}
+                                    <div class="file">
+                                        <p>{{ file.split('/') | last }}</p>
+                                        <a href="/{{ file }}" target="_blank" class="remove-file">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </a>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                {% if not announcement.haveAttachment() %}
+                                <input type="file" name="attachmentFiles" id="attachment-files" style="display: none;" multiple>
+                                <input type="submit" class="input choose-file" value="CHOOSE FILES" id="choose-file">
+                                {% else %}
+                                <a class="status-type not-submitted" href="/classes/{{course.course_id}}/editAnnouncement/{{announcement.id}}/removeAttachment">
+                                    remove attachment
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <input type="submit" value="Save Changes" id="save-changes">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const AttachmnetFiles = document.getElementById("attachment-files");
+        const ChooseFile = document.getElementById("choose-file");
+        ChooseFile.addEventListener("click", (e) => {
+            e.preventDefault();
+            AttachmnetFiles.click();
+        });
+
+        AttachmnetFiles.addEventListener("change", (e) => {
+            const UserFiles = document.getElementById("user-files");
+            const Files = AttachmnetFiles.files;
+            UserFiles.innerHTML = ""
+            for (let i = 0; i < Files.length; i++) {
+                const File = Files[i];
+                console.log(File);
+
+                UserFiles.innerHTML += `<div class="file">
+                            <a href="">${File.name}</a>
+                        </div>`;
+            }
+        });
+    </script>
+</body>
+
+</html>

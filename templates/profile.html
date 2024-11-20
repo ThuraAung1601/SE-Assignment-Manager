@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include 'head.html' %}
+    <link rel="stylesheet" type="text/css" href="/css/header.css">
+    <link rel="stylesheet" type="text/css" href="/css/profile.css">
+    <script src="/js/profile.js" defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        label {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+
+        .profile {
+            width: 70%;
+            max-width: 80rem;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 0.5rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: var(--middle-grey);
+            color: var(--white);
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            padding-top: 15rem;
+        }
+
+        .profile-container {
+            display: flex;
+            flex-direction: row;
+            gap: 4rem;
+            align-items: left;
+            padding-bottom: 2rem;
+            padding-top: 1rem;
+        }
+
+        .left-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 50%;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile label {
+            margin-top: 10px;
+        }
+
+        input,
+        textarea {
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 10rem;
+            background-color: var(--black);
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: bold;
+            border: none;
+        }
+
+        input[type="file"] {
+            border: 0.1rem solid #ccc;
+            border-radius: 10rem;
+            background-color: var(--middle-grey);
+        }
+
+        input[type="submit"] {
+            background-color: var(--green);
+            color: white;
+            width: 20%;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: var(--accent-color);
+        }
+
+        #profile-pic {
+            width: 10rem;
+            height: 10rem;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border-radius: 10rem;
+        }
+
+        table {
+            width: 100%; /* Make the table take full width of the container */
+            border-collapse: collapse; /* Remove double borders */
+            margin: 20px 0; /* Add some space above and below the table */
+            font-size: 11px; /* Increase font size for better readability */
+            text-align: center; /* Align text to the left for consistency */
+        }
+
+        thead tr {
+            background-color: #0f0a0a; /* Light gray background for header */
+        }
+
+        thead th, tbody td {
+            border: 1px solid #0f0a0a; /* Light gray borders for cells */
+            padding: 12px 15px; /* Add padding for a cleaner look */
+        }
+
+        tbody tr:hover {
+            background-color: #3c3838; /* Highlight row on hover */
+        }
+
+        strong {
+            font-weight: bold; /* Bold style for GPA row */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            table {
+                font-size: 14px; /* Adjust font size for smaller screens */
+            }
+
+            thead th, tbody td {
+                padding: 8px 10px; /* Reduce padding for smaller screens */
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    {% include 'nav.html'%}
+
+    <div class="content">
+        <div class="profile">
+            <h2>Profiles</h2>
+            <form action="/profile" method="POST" enctype="multipart/form-data" id="profile">
+                <!-- Existing form fields -->
+                <div class="profile-container">
+                    <div class="left-content">
+                        <label for="name">NAME</label>
+                        <input type="text" id="name" name="name" value="{{ client.name }}" required>
+
+                        <label for="user_name">ID</label>
+                        <input type="text" id="user_name" name="user_name" value="{{ client.user_name }}" required>
+
+                        {% if client.isStudent() %}
+                        <table border="1">
+                            <thead>
+                                <tr>
+                                    <!-- <th>ID</th>
+                                    <th>Name</th> -->
+                                    <th>Course ID</th>
+                                    <th>Course Name</th>
+                                    <th>Credits</th>
+                                    <th>Score</th>
+                                    <th>Grade</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- <tr>
+                                    <td rowspan="{{ client.enrolls|length + 1 }}">{{ client.ID }}</td>
+                                    <td rowspan="{{ client.enrolls|length + 1 }}">{{ client.name }}</td>
+                                </tr> -->
+                                {% for enroll in client.enrolls %}
+                                <tr>
+                                    <td>{{ enroll.getCourse().course_id }}</td>
+                                    <td>{{ enroll.getCourse().name }}</td>
+                                    <td>{{ enroll.getCourse().getCredit() }}</td>
+                                    <td>{{ enroll.getScore() }}</td>
+                                    <td>{{ enroll.getGrade() }}</td>
+                                </tr>
+                                {% endfor %}
+                                <tr>
+                                    <td colspan="4" style="text-align: right;"><strong>Current GPA:</strong></td>
+                                    <td colspan="2">{{ client.getGPA() }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    {% endif %}
+
+                    </div>
+                    <!-- New profile picture upload field -->
+                    <div class="left-content">
+                        <img id="profile-pic" src="{{ client.avatar }}" alt="">
+                        <input type="file" id="choose-image" name="avatar" accept="image/*">
+                    </div>
+                </div>
+                <input type="submit" value="Save Changes">
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include 'head.html' %}
+    <link rel="stylesheet" type="text/css" href="/css/header.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/classes.css">
+</head>
+
+<body>
+    {% include 'nav.html'%}
+
+    <div class="content">
+
+        {% include 'sidebar.html'%}
+
+        <div class="right-content">
+            <div class="banner">
+                <img src="{{ course.banner }}" alt="">
+            </div>
+            <div class="title">
+                {{ course.name }} - Assignments
+            </div>
+            <div class="title">
+                {% if client_type == "Lecturer" %}
+                <a href="/classes/{{course.course_id}}/addAssignment" class="add-assignment">
+                    ADD ASSIGNMENT <i class="fa-solid fa-plus"></i>
+                </a>
+                {% endif %}
+            </div>
+            <div class="wrap-assignment">
+                <div class="assignments-ctn">
+                    {%if course.assignments|length > 0 %}
+                    {% for assignment in course.assignments %}
+                        {% if client_type == "Lecturer" %}
+                        <div class="assignment">
+                            <div class="assignment-title">{{ assignment.name }}</div>
+                            
+                            <div class="assignment-ctn-edit">
+                                <a href="/classes/{{course.course_id}}/assignments/{{assignment.id}}"> <!-- link to grading page -->
+                                    <i class="fa-solid fa-eye"></i>
+                                    <p>PREVIEW</p>
+                                </a>
+                                <a href="/classes/{{course.course_id}}/grade/{{assignment.id}}"> <!-- link to grading page -->
+                                    <i class="fa-solid fa-check"></i>
+                                    <p>GRADE</p>
+                                </a>
+                                <a href="/classes/{{course.course_id}}/editAssignment/{{assignment.id}}">
+                                    <i class="fa-solid fa-pencil"></i>
+                                    <p>EDIT</p>
+                                </a>
+                                <a href="/classes/{{course.course_id}}/removeAssignment/{{assignment.id}}">
+                                    <i class="fa-solid fa-trash"></i>
+                                    <p>DELETE</p>
+                                </a>
+                            </div>
+    
+                        </div>
+                        {% else %}
+                        <a href="/classes/{{course.course_id}}/assignments/{{assignment.id}}" class="assignment hover-orange">
+                            <div class="assignment-title">{{ assignment.name }}</div>
+                            <div class="assignment-status">{{ assignment.checkSubmitted(client.ID) }}</div>
+                            <div class="assignment-duedate">Due {{ assignment.due_date }}</div>
+                        </a>
+                        {% endif %}
+                    {% endfor %}
+                    {% else %}
+                    <div>No assignments.</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

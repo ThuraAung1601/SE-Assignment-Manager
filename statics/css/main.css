@@ -1,0 +1,521 @@
+.content .alternate-bg:nth-child(even) {
+    background: var(--main-color);
+}
+
+.content .alternate-bg:nth-child(odd) {
+    background: var(--main-color);
+}
+
+.intro {
+    position: relative;
+}
+
+.intro-bg {
+    height: 80vh;
+    z-index: -1;
+    background:
+        linear-gradient(90deg, hsla(223, 90%, 56%, 0), hsla(0, 5%, 9%, 0.8) 55%),
+        url("../images/kmitl-campus-drone-view.png") no-repeat center center / cover;
+}
+
+.intro-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    position: absolute;
+    top: 30%;
+    left: 60%;
+    color: var(--white);
+}
+
+.intro-text-title {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.custom-btn {
+    width: 20rem;
+    height: 5rem;
+    color: #fff;
+    border-radius: 5rem;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    background: var(--accent-color);
+    line-height: 4.2rem;
+    padding: 0;
+    border: none;
+    text-align: center;
+    margin: 10px auto;
+}
+
+.custom-btn span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding-top: 0.3rem;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.6rem;
+}
+
+/* .custom-btn:before,
+.custom-btn:after {
+    position: absolute;
+    content: "";
+    right: 0;
+    bottom: 0;
+    background: var(--accent-color);
+    transition: all 0.3s ease;
+}
+
+.custom-btn:before {
+    height: 0%;
+    width: 0.2rem;
+}
+
+.custom-btn:after {
+    width: 0%;
+    height: 0.2rem;
+} */
+
+.custom-btn:hover {
+    color: var(--accent-color);
+    background: transparent;
+    border: 2px solid var(--accent-color);
+}
+
+.custom-btn:hover:before {
+    height: 100%;
+}
+
+.custom-btn:hover:after {
+    width: 100%;
+}
+
+.custom-btn span:before,
+.custom-btn span:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    background: var(--accent-color);
+    transition: all 0.3s ease;
+}
+
+.custom-btn span:before {
+    width: 0.2rem;
+    height: 0%;
+}
+
+.custom-btn span:after {
+    height: 0.2rem;
+    width: 0%;
+}
+
+.custom-btn span:hover:before {
+    height: 100%;
+}
+
+.custom-btn span:hover:after {
+    width: 100%;
+}
+
+.about-wrap {
+    display: flex;
+    flex-direction: column;
+    padding: 6rem;
+    gap: 4rem;
+}
+
+.about-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.br {
+    display: block;
+    height: 0.2rem;
+    background-color: var(--neutral-grey);
+}
+
+.br2 {
+    display: block;
+    height: 0.2rem;
+    background-color: var(--middle-grey);
+}
+
+.info-header {
+    color: var(--accent-color);
+    font-size: 3rem;
+    font-weight: bold;
+    /* text-shadow: 0.2rem 0.2rem 0.6rem var(--dark-grey); */
+}
+
+.info-content {
+    color: var(--black);
+    font-size: 1.6rem;
+    font-weight: 300;
+    line-height: 3rem;
+}
+
+.news-wrap {
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 10rem;
+    gap: 4rem;
+}
+
+.news-header-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.news-header {
+    color: var(--accent-color);
+    font-size: 3rem;
+    font-weight: bold;
+    /* text-shadow: 0.2rem 0.2rem 0.6rem var(--dark-grey); */
+}
+
+.news-boxes {
+    display: flex;
+    flex-direction: row;
+    gap: 5rem;
+    justify-content: center;
+}
+
+.news-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 35rem;
+    background-color: var(--main-color);
+    border-radius: 1rem;
+    
+    cursor: pointer;
+    border: 1px solid var(--neutral-grey)
+    
+}
+
+.news-box:hover{
+    box-shadow: 0 1px 11px 1px var(--middle-grey);
+}
+
+.news-img {
+    width: 100%;
+    height: 18rem;
+    border-radius: 1rem;
+    background-color: var(--white);
+    cursor: pointer;
+}
+
+.news-img img{
+    width: 100%;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.news-content {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    flex-grow: 1;
+}
+
+.news-title {
+    color: var(--black);
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.news-info {
+    color: var(--black);
+    font-size: 1.6rem;
+    flex-grow: 1;
+} 
+
+#news{
+    background: var(--middle-grey);
+}
+#news h2, .admission h2{
+    padding-top: 30px;
+    padding-left:20px;
+    padding-right: 20px;
+    font-size: 30px;
+    text-align: left;
+    text-transform: uppercase;
+    margin-left: 40px;
+    color: var(--accent-color);
+}
+
+#news .divider{
+    width: 80px;
+    margin:0 auto;
+}
+
+.news-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.news{
+    width: 600px;
+    height: 320px;
+    background-color: var(--white);
+    margin: 20px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 2px 5px 10px var(--white);
+    transition: transform 0.3s ease-in-out;
+}
+
+.news:hover{
+    transform: translateY(-10px);
+}
+
+.news .image-container{
+    text-align: center;
+}
+
+.news .image-container img{
+    width: 580px;
+    height: 200px;
+    object-fit: cover;
+    margin-top: 10px;
+    
+}
+
+.body-text p{
+    /* margin-left: 10px; */
+    font-size: 15px;
+    margin: 15px 10px;
+}
+
+.news-btn{
+    padding: 10px 20px;
+    margin-left: 10px;
+    background-color: rgb(239, 89, 35);
+    border: 0;
+    border-radius: 5px;
+    color: white;
+}
+
+.news-btn:hover{
+    cursor: pointer;
+}
+.admission{
+    margin-bottom: 20px;
+}
+.admission .card-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.card{
+    width: 300px;
+    height: 300px;
+    padding: 20px;
+    margin: 10px 20px;
+    color: var(--black);
+    border: 1px solid rgb(66, 29, 29);
+    border-radius: 10px;
+    text-align: center;
+}
+.card:hover{
+    box-shadow: 3px 2px 10px rgb(154, 101, 101);
+}
+
+.card h4{
+    font-size: 25px;
+}
+
+.card p{
+    margin:20px 0;
+    font-size: 20px;
+    opacity: 0.8;
+}
+
+.card h3{
+    font-size: 35px;
+}
+
+.card .btn{
+    padding: 10px 20px;
+    background-color: rgb(239, 89, 35);
+    border: 0;
+    border-radius: 5px;
+    
+}
+
+.card .btn a{
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+}
+.card .btn:hover,.banner .btn:hover{
+    transform: scale(1.2);
+}
+
+.admission .divider{
+    height: 5px;
+    width: 100px;
+    background-color: rgb(240, 153, 121);
+    margin: 0 auto;
+}
+
+
+
+
+.event {
+    height: 80vh;
+    z-index: -1;
+    background:
+        linear-gradient(90deg, var(--middle-grey) 30%, hsla(0, 5%, 9%, 0)),
+        url("../images/kmitl-campus-drone-view.png") no-repeat center center / cover;
+}
+
+.event-wrap {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+    gap: 4rem;
+    width: 30%;
+    height: 100%;
+    justify-content:space-between;
+}
+
+.event-header {
+    color: var(--accent-color);
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+
+.event-title {
+    color: var(--white);
+    font-size: 2.6rem;
+    font-weight: bold;
+}
+.event-date {
+    color: var(--white);
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.event-info {
+    color: var(--white);
+    font-size: 1.6rem;
+    flex-grow: 1;
+}
+
+@media (max-width: 576px) {
+    .news-container{
+        display: block;
+    }
+    .news {
+        width: 90%;        
+        margin: 20px auto;
+    }
+    .news .image-container img {
+        width: 95%;
+    }
+
+    .body-text p {
+        font-size: 0.85rem;
+    }
+
+}
+
+@media (max-width: 768px){
+    .nav .text-container .title-span{
+        font-size: 17px;
+    }
+    .news {
+        width: 80%;
+    }
+
+    .news .image-container img {
+        width: 95%;
+    }
+
+    .body-text p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1023px){
+    .news {
+        width: 400px;
+        height: 330px;
+    }
+
+    .news .image-container img {
+        width: 380px;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1120px){
+    .news {
+        width: 500px;
+    }
+
+    .news .image-container img {
+        width: 480px;
+    }
+}
+
+@media (min-width: 1121px) and (max-width: 1409px){
+    .news {
+        width: 550px;
+    }
+
+    .news .image-container img {
+        width: 530px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .intro-text {
+        left: 10%;
+    }
+    .news-wrap{
+        padding: 4rem 2rem;
+    }
+    .news-boxes {
+        flex-direction: column;
+    }
+    .news-img{
+        height: 30rem;
+    }
+    .news-box {
+        width: 100%;
+    }
+    .event-wrap {
+        justify-content: flex-start;
+        width: 100%;
+    }
+    .event{
+        background: linear-gradient(180deg, var(--middle-grey) 40%, hsla(0, 5%, 9%, 0)),
+        url(../images/kmitl-campus-drone-view.png) no-repeat center center / cover;
+    }
+
+    .intro-bg{
+        height: 60vh;
+    }
+}

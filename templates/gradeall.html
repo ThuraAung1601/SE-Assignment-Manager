@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include 'head.html' %}
+    <link rel="stylesheet" type="text/css" href="/css/header.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/classes.css">
+    
+</head>
+
+<body>
+    {% include 'nav.html'%}
+
+    <div class="content">
+
+        {% include 'sidebar.html'%}
+
+        <div class="right-content">
+            <div class="banner">
+                <img src="{{ course.banner }}" alt="">
+            </div>
+            <div class="title">
+                {{ course.name }} - Grading
+            </div>
+            <div class="wrap-assignment">
+                <div class="grade-all-ctn">
+                    <div class="grade-all-title">
+                        <p>STUDENT ID</p>
+                        <p>STUDENT NAME</p>
+                        <p>STATUS</p>
+                        <p>GRADE</p>
+                        <p>OPTION</p>
+                    </div>
+                    <div class="horizontal-line"></div>
+                    {% for key, val in submitted_work.items() %}
+                    <div class="student">
+                        <p>{{ val["id"] }}</p>
+                        <p>{{ root.clients[val["id"]].name }}</p>
+                        
+                        <div class="submission-status">
+                            {% if val["late"] == True %}
+                            <div class="late">Late</div>
+                            {% else %}
+                            <div class="ontime">On Time</div>
+                            {% endif %}
+                        </div>
+                        <div class="grade">
+                            {{ val["score"] }} 
+                            <div class="max-grade">
+                                / {{ assignment.max_score }}
+                            </div>
+                        </div>
+                        <div class="grade-options">
+                            <a href="/classes/{{course.course_id}}/grade/{{assignment.id}}/{{key}}">
+                                <i class="fa-solid fa-pencil"></i>
+                                <p>GRADE</p>
+                            </a>
+                            <a href="/delete/submission/{{course.course_id}}/{{assignment.id}}/{{val['id']}}">
+                                <i class="fa-solid fa-trash"></i>
+                                <p>REMOVE</p>
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

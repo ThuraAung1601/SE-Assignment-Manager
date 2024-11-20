@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% include 'head.html' %}
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="/css/header.css">
+  <link rel="stylesheet" type="text/css" href="/css/login.css">
+</head>
+
+<body>
+  <!-- content goes here -->
+  <div class="container" onclick="">
+    <img src="/images/SE_logo_tranparent.svg" alt="" class="fixed-image">
+    <div class="top"></div>
+    <div class="bottom"></div>
+    <div class="center">
+      <h2>Please Log In</h2>
+      <br>       <br>
+      <form action="/login" method="post" id="login-form">
+        <input type="number" id="ID" name="ID" placeholder="ID" required>
+        <br>
+        <br>
+        <input type="password" id="account-password" name="password" placeholder="password" required>
+        <div class="button-section">
+          <a class="button-home" href="/"><i class="fa-solid fa-house fa-lg"></i></a>
+          <button type="submit" class="button-login">Login</button>
+        </div>
+      </form>
+      <div id="message"></div>
+    </div>
+  </div>
+  <!-- content end here -->
+  <script src="/js/login.js"></script>
+  <script>
+    const params = new Proxy(new URLSearchParams(window.location.search), {
+      get: (searchParams, prop) => searchParams.get(prop),
+    });
+
+    let error = params.error;
+    console.log(error);
+
+    if (error){
+      alert("Wrong ID or password")
+      const ID = document.getElementById("ID");
+      const password = document.getElementById("account-password");
+      ID.style.border = "2px solid red";
+      password.style.border = "2px solid red";
+    }
+  </script>
+</body>
+
+</html>

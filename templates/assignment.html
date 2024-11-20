@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include 'head.html' %}
+    <link rel="stylesheet" type="text/css" href="/css/header.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/classes.css">
+</head>
+
+<body>
+    {% include 'nav.html'%}
+
+    <div class="content">
+
+        {% include 'sidebar.html'%}
+        
+        <div class="right-content">
+            <div class="banner">
+                <img src="{{ course.banner }}" alt="">
+            </div>
+            <div class="assignment-ctn">
+                <div class="information-ctn">
+                    <div class="assignment-information-title">
+                        <div class="assignment-title">
+                            {{ assignment.name }}
+                        </div>
+                        <div class="grade">
+                            Grade: 
+                            {% if assignment.checkSubmitted(client.ID) == "Not Summited" %}
+                            0 / {{ assignment.max_score }}
+                            {% else %}
+                            {{ assignment.submitted_work[client.ID]["score"] }} / {{ assignment.max_score }}
+                            {% endif %}
+                        </div>
+                        <div class="duedate">
+                            Due: {{ assignment.due_date }}
+                        </div>
+                    </div>
+                    <div class="assignment-description">
+<pre>
+    {{ assignment.description }}
+</pre>
+                        
+                    </div>
+                    <div class="horizontal-line"></div>
+                    <div class="others">
+                        <div class="others-title">
+                            OTHER DOCUMENTS INCLUDED
+                        </div>
+                        
+                        <div class="documents">
+                            {% for file in assignment.attachment %}
+                            <div class="document">
+                                <p class="name">{{ file.split('/') | last }}</p>
+                                <div class="options">
+                                    <a href="/{{ file }}" class="option" target="_blank">
+                                        <i class="fa-solid fa-eye"></i>
+                                        <p>PREVIEW</p>
+                                    </a>
+                                    <a href="/{{ file }}" class="option" download="">
+                                        <i class="fa-solid fa-download"></i>
+                                        <p>DOWNLOAD</p>
+                                    </a>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="submission-ctn">
+                    <div class="status">
+                        <p>STATUS</p>
+                        {% if assignment.checkSubmitted(client.ID) == "Not Summited" %}
+                        <div class="status-type not-submitted">
+                            NOT SUBMITTED
+                        </div>
+                        {% else %}
+                        <div class="status-type submitted">
+                            SUBMITTED
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="userfiles" id="user-files">
+                        {% if assignment.checkSubmitted(client.ID) == "Not Summited" %}
+                        {% else %}
+                            {% for file in assignment.submitted_work[ID]["work"] %}
+                            <div class="file">
+                                <p>{{ file.split('/') | last }}</p>
+                                <a href="/{{ file }}" target="_blank" class="remove-file">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+                            </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <form action="/uploadFile/{{course.course_id}}/{{ assignment.id }}" method="post" enctype="multipart/form-data">
+                        <input type="file" name="assignmentFiles" id="assignment-files" style="display: none;" multiple>
+                        {% if client_type != "Lecturer" %}
+                            {% if assignment.checkSubmitted(client.ID) == "Not Summited" %}
+                            <input type="submit" class="input submit" value="SUBMIT">
+                            <input type="submit" class="input choose-file" value="CHOOSE FILES" id="choose-file">
+                            {% else %}
+                            <a class="status-type not-submitted" href="/unsubmit/{{course.course_id}}/{{ assignment.id }}">
+                                UNSUBMIT WORK
+                            </a>
+                            {% endif %}
+                        {% else %}
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const AssignmentFiles = document.getElementById("assignment-files");
+        const ChooseFile = document.getElementById("choose-file");
+        ChooseFile.addEventListener("click", (e) => {
+            e.preventDefault();
+            AssignmentFiles.click();
+        });
+
+        AssignmentFiles.addEventListener("change", (e) => {
+            const UserFiles = document.getElementById("user-files");
+            const Files = AssignmentFiles.files;
+            UserFiles.innerHTML = ""
+            for (let i = 0; i < Files.length; i++) {
+                const File = Files[i];
+                console.log(File);
+
+                UserFiles.innerHTML += `<div class="file">
+                            <a href="">${File.name}</a>
+                        </div>`;
+            }
+        });
+    </script>
+</body>
+
+</html>

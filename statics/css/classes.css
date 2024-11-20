@@ -1,0 +1,841 @@
+.side-bar{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: fixed;
+    width: 25%;
+    padding: 4.5rem 2.5rem;
+    background-color: var(--light-grey);
+    height: calc(100vh - 12rem);
+    bottom: 0;
+    color: var(--black);
+    font-weight: bold;
+    font-size: 2.5rem;
+    overflow-y: auto;
+    gap: 2.5rem;
+    transition: left 0.5s ease-in-out;
+}
+
+.side-bar .label{
+    color: var(--white);
+}
+
+.side-bar .icon{
+    color: var(--white);
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+}
+.side-bar .icon:hover{
+    transform: rotate(90deg);
+}
+.responsive-bar{
+    font-size: 3rem;
+    position: fixed;
+    height: 5vh;
+    z-index: 20;
+    background-color: var(--accent-color);
+    color: var(--black);
+    padding: 2rem;
+    border-radius: 100%;
+    width: calc(5vh);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: calc(2.5vh + 14rem);
+    left: 2rem;
+    display: none;
+    font-weight: bold;
+}
+
+.course-container{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    /* background-color: var(--black); */
+}
+
+.course {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.6rem;
+    padding: 0.75rem;
+    width: 25rem;
+    background-color: var(--white);
+    font-size: 1.6rem;
+    box-shadow: 1px 2px 7px 1px var(--accent-color);
+    width: 100%;
+}
+
+.course:hover {
+    background-color: var(--accent-color);
+    color: var(--white);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+
+.course:hover .dropdown-content {
+    display: block;
+    transition: 0.2s;
+}
+
+.dropdown-content {
+    display: none;
+    transition: 0.2s;
+}
+
+.course label {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 0.5rem;
+}
+
+.course-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    font-size: 1.4rem;
+    font-weight: normal;
+    gap: 1rem;
+    padding: 1.2rem;
+    border-radius: 0.6rem;
+    color: var(--white);
+    /* background-color: var(--accent-color); */
+}
+
+
+.course-content:hover {
+    background-color: var(--kmitl-orange);
+}
+
+.right-content .title{
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--black);
+    padding: 2rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.right-content .student-small-title{
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--white);
+    padding: 1rem 1rem 1rem 5rem;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+}
+
+.right-content .grading-title{
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--white);
+    padding: 1rem;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+}
+
+.grading-form{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.grading-form .input{
+    padding: 1rem 3rem;
+    border-radius: 2rem;
+    color: var(--white);
+    font-weight: bold;
+    font-size: 1.6rem;
+    border: none;
+    cursor: pointer;
+    transition: .2s;
+    background-color: var(--main-color);
+}
+
+.grading-form .input[type="submit"]{
+    width: 20%;
+    background-color: var(--green);
+}
+
+.grading-form .input[type="submit"]:hover{
+    background-color: var(--accent-color);
+}
+
+
+.right-content .title .add-assignment{
+    background-color: var(--green);
+    padding: 1.5rem 2rem;
+    border-radius: 3rem;
+    color: var(--white);
+    transition: .2s;
+    font-size: 2rem;
+}
+
+.room-ctn{
+    width: 100%;
+    background-color: var(--middle-grey);
+    padding: 2.5rem 2rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.room-ctn p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.room-ctn .rooms-title{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.room-ctn .room{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    font-size: 1.6rem;
+    font-weight: bold;
+    background-color: var(--light-grey);
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 1px 2px 7px 1px var(--accent-color);
+}
+
+
+.room-ctn .room-options{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.room-ctn .room a{
+    display: flex;
+    padding: 0.5rem 2rem;
+    border-radius: 2rem;
+    background-color: var(--accent-color);
+    color: var(--white);
+    transition: .3s;
+    max-width: 6rem;
+}
+
+.room-ctn .room a p{
+    width: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.room-ctn .room a:hover{
+    gap: 1rem;
+    max-width: 30rem;
+}
+
+.room-ctn .room a:hover p{
+    animation: showtype 0.3s ease-in-out forwards;
+}
+
+.room-ctn .room a:hover:nth-child(1){
+    background-color: var(--green);
+}
+
+.room-ctn .room a:hover:nth-child(2){
+    background-color: var(--yellow);
+    color: var(--middle-grey);
+}
+
+.room-ctn .room a:hover:nth-child(3){
+    background-color: var(--red);
+}
+
+
+.content {
+    display: flex;
+    height: 100vh; /* Adjust this to your needs */
+    width: auto;
+}
+/* 
+.sidebar {
+    width: 25%;
+    background-color: var(--middle-grey);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    color: white;
+} */
+
+.right-content {
+    width: 100%;
+    padding-left: calc(100vw * 0.25);
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    text-align: right;
+}
+
+.banner {
+    height: 40vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: white;
+}
+
+.banner img{
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+}
+
+.banner img[src="/images/web-banner.jpeg"]{
+    height: 100%;
+}
+
+
+
+.wrap-assignment {
+    width: 100%;
+    padding: 1rem 5rem;
+    color: var(--black);
+    
+}
+
+.wrap-assignment .assignments-ctn{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 3rem;
+    background-color: var(--white);
+    border-radius: 1rem;
+    /* border:2px solid var(--accent-color); */
+    
+}
+
+
+.wrap-assignment .assignment {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: var(--white);
+    transition: 0.3s;
+    font-size: 1.6rem;
+    color: var(--black);
+    text-decoration: none;
+    border:1px solid var(--black);
+    /* box-shadow: 1px 1px 10px var(--accent-color); */
+    /* box-shadow: 16px 10px 13px -5px var(--accent-color);s */
+}
+
+.wrap-assignment .assignment:hover {
+    background-color: var(--white);
+    color: var(--black);
+    box-shadow: 11px 10px 13px -5px var(--accent-color);
+    transform: translate(-0.5rem, -0.5rem);
+}
+
+.wrap-assignment .assignment .assignment-title {
+    font-weight: bold;
+}
+
+.wrap-assignment .assignment .assignment-duedate,
+.wrap-assignment .assignment .assignment-status {
+    font-weight: bold;
+}
+
+/* For assignment page */
+.assignment-ctn{
+    display: flex;
+    padding: 3rem;
+    text-align: left;
+    color: var(--black);
+    gap: 2rem;
+    flex-direction: column;
+}
+
+.assignment-information-title{
+    background-color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.assignment-information-title .grade{
+    color: var(--white);
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.assignment-information-title .assignment-title{
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.assignment-information-title .duedate{
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--red);
+}
+
+.assignment-description{
+    border-radius: 1rem;
+    font-size: 1.6rem;
+    font-weight: normal;
+    line-height: 1.5em;
+}
+
+.information-ctn{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    border: 2px solid var(--accent-color);
+    border-radius: 10px;
+}
+
+.information-ctn .grade{
+    font-size: 2rem;
+}
+
+.information-ctn .others-title{
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.documents{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.documents .document{
+    display: flex;
+    width: 100%;
+    background-color: var(--light-grey);
+    border-radius: 1rem;
+    font-size: 1.6rem;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+.documents .document .options{
+    display: flex;
+    gap: 1rem;
+}
+
+.documents .document .option{
+    color: var(--white);
+    padding: 0.5rem 2rem;
+    border-radius: 1rem;
+    display: flex;
+    max-width: 6rem;
+    transition: max-width 0.3s;
+}
+
+.documents .document .option:nth-child(1){
+    background-color: var(--accent-color);
+}
+
+.documents .document .option:nth-child(2){
+    background-color: var(--green);
+}
+
+.documents .document .option p{
+    opacity: 0;
+    width: 0px;
+    overflow: hidden;
+}
+
+.documents .document .option:hover{
+    gap: 1rem;
+    max-width: 30rem;
+}
+
+.documents .document .option:hover p{
+    animation: showtype 0.3s ease-in-out forwards;
+}
+
+.submission-ctn{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 30rem;
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 1rem;
+    gap: 1.5rem;
+    border: 2px solid var(--accent-color)
+}
+
+.submission-ctn .status{
+    display: flex;
+    gap: 1rem;
+    font-size: 2rem;
+    align-items: center;
+}
+
+.add-assignment-content .status-type{
+    font-weight: bold;
+    font-size: 1.6rem;
+    padding: 1rem 2rem;
+    border-radius: 3rem;
+    text-wrap: nowrap;
+}
+
+.add-assignment-content .not-submitted{
+    background-color: red;
+    color: var(--white);
+}
+
+.add-assignment-content .submitted{
+    background-color: var(--green);
+    color: var(--white);
+}
+
+.submission-ctn .status-type{
+    font-weight: bold;
+    font-size: 1.6rem;
+    padding: 1rem 2rem;
+    border-radius: 3rem;
+    text-wrap: nowrap;
+}
+
+.submission-ctn .not-submitted{
+    background-color: var(--red);
+    color: var(--white);
+}
+
+.submission-ctn .submitted{
+    background-color: var(--green);
+    color: var(--white);
+}
+
+.userfiles{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.userfiles .file{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: var(--light-grey);
+    font-size: 1.6rem;
+    min-width: 24rem;
+    gap: 2rem;
+}
+
+.userfiles .file a{
+    color: var(--white);
+    transition: .2s;
+}
+
+.userfiles .file a:hover{
+    color: var(--accent-color);
+}
+
+.userfiles .file .remove-file{
+    background-color: var(--yellow);
+    padding: 0.5rem 2rem;
+    border-radius: 1rem;
+}
+
+.userfiles .file a.remove-file:hover{
+    color: var(--white);
+}
+
+.submission-ctn form{
+    display: flex;
+    gap: 1rem;
+}
+
+.submission-ctn .input{
+    padding: 1rem 3rem;
+    border-radius: 2rem;
+    color: var(--white);
+    font-weight: bold;
+    font-size: 1.6rem;
+    border: none;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.submission-ctn .submit{
+    background-color: var(--accent-color);
+}
+
+.submission-ctn .submit:hover{
+    background-color: var(--kmitl-orange);
+}
+
+.submission-ctn .choose-file{
+    background-color: var(--dark-white);
+    color: var(--main-color);
+}
+
+.submission-ctn .choose-file:hover{
+    background-color: var(--green);
+    color: var(--white);
+}
+
+.assignment a{
+    display: flex;
+    padding: 0.5rem 2rem;
+    border-radius: 2rem;
+    background-color: var(--accent-color);
+    color: var(--white);
+    transition: .3s;
+    max-width: 6rem;
+}
+
+.assignment a p{
+    width: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.assignment a:hover{
+    gap: 1rem;
+    max-width: 30rem;
+}
+
+.assignment a:hover p{
+    animation: showtype 0.3s ease-in-out forwards;
+}
+
+.assignment a:hover:nth-child(2){
+    background-color: var(--green);
+}
+
+.assignment a:hover:nth-child(3){
+    background-color: var(--yellow);
+    color: var(--middle-grey);
+}
+
+.assignment a:hover:nth-child(4){
+    background-color: var(--red);
+}
+
+.assignment .assignment-ctn-edit {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+/* for grading */
+.grade-all-ctn{
+    width: 100%;
+    background-color: var(--white);
+    padding: 2.5rem 2rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border: 2px solid var(--accent-color);
+}
+
+.grade-all-ctn p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grade-all-ctn .grade-all-title{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    width: 100%;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.grade-all-ctn .student{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    width: 100%;
+    font-size: 1.6rem;
+    font-weight: bold;
+    background-color: var(--light-grey);
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 1px 2px 7px 1px var(--accent-color);
+}
+
+
+.grade-all-ctn .grade-options{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.grade-all-ctn .student a{
+    display: flex;
+    padding: 0.5rem 2rem;
+    border-radius: 2rem;
+    background-color: var(--accent-color);
+    color: var(--white);
+    transition: .3s;
+    max-width: 6rem;
+}
+
+.grade-all-ctn .student a p{
+    width: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.grade-all-ctn .student a:hover{
+    gap: 1rem;
+    max-width: 30rem;
+}
+
+.grade-all-ctn .student a:hover p{
+    animation: showtype 0.3s ease-in-out forwards;
+}
+
+.grade-all-ctn .student a:hover:nth-child(1){
+    background-color: var(--green);
+}
+
+.grade-all-ctn .student a:hover:nth-child(2){
+    background-color: var(--red);
+}
+
+.grade-all-ctn .grade{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.grade-all-ctn .grade .max-grade{
+    color: var(--main-color);
+}
+
+.grade-all-ctn .submission-status{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.grade-all-ctn .submission-status div{
+    padding: 0.5rem 2rem;
+    border-radius: 5rem;
+    width: 70%;
+    gap: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grade-all-ctn .submission-status .late{
+    background-color: var(--red);
+}
+
+.grade-all-ctn .submission-status .ontime{
+    background-color: var(--green);
+}
+
+.button-div{
+    margin:0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button-div a{
+    padding: 15px;
+    background-color: var(--accent-color);
+    color: var(--white);
+    border-radius: 10px;
+    font-size: 17px;
+    transition: background-color 0.6s ease;
+}
+
+.button-div a:hover{
+    color: var(--black);
+    background-color: transparent;
+    border: 2px solid var(--accent-color);
+}
+
+
+@keyframes showtype{
+    0%{
+        opacity: 0;
+        width: 0;
+    }
+    100%{
+        opacity: 1;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 800px){
+    .banner{
+        height: 10vh;
+    }
+    .side-bar{
+        padding-top: 10vh;
+        left: -100%;
+        width: 90%;
+        height: calc(100vh - 14rem)
+    }
+
+    .side-bar.active{
+        left: 0;
+    }
+
+    .responsive-bar{
+        display: flex;
+    }
+
+    .right-content .title{
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .right-content{
+        padding-left: 0;
+    }
+    .wrap-assignment{
+        padding: 1rem;
+    }
+    .wrap-assignment .assignments-ctn{
+        padding: 1rem;
+    }
+    .wrap-assignment .assignment{
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
