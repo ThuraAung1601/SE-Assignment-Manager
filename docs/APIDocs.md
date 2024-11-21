@@ -1,6 +1,5 @@
 # FastAPI Project Documentation
 
-This document provides an overview of the endpoints for the FastAPI application, which manages a learning management system (LMS) for students and lecturers.
 
 ## Endpoints
 
